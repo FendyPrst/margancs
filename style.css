@@ -1,0 +1,1095 @@
+    /* =========================================================
+       0. TOKEN WARNA & VARIABEL GLOBAL
+       ========================================================= */
+    :root {
+      /* =======================================================
+         TEMA DARK ZYNETHERA — kelabu/perak, ungu & biru dinipiskan
+         Nama token lama dikekalkan sebagai alias supaya semua
+         komponen sedia ada terus konsisten.
+         ======================================================= */
+      --bg: #090909;
+      --bg-deep: #090909;
+      --bg-mid: #171717;
+
+      /* Kaca gelap ala Zynthera */
+      --glass: linear-gradient(145deg, rgba(22, 22, 22, 0.16), rgba(12, 12, 12, 0.1));
+      --glass-strong: rgba(255, 255, 255, 0.055);
+      --glass-hover: rgba(114, 114, 114, 0.13);
+      --stroke: rgba(178, 178, 178, 0.2);
+      --stroke-soft: rgba(171, 171, 171, 0.08);
+      --glass-edge: rgba(255, 255, 255, 0.42);
+      --glass-sheen: rgba(255, 255, 255, 0.3);
+      --glass-glow: rgba(206, 206, 206, 0.12);
+
+      /* Teks */
+      --text: #f4f4f4;
+      --muted: #b1b1b1;
+      --muted-2: rgba(176, 176, 176, 0.55);
+
+      /* Aksen monokrom Zynthera */
+      --violet: #727272;
+      --violet-deep: #5a5a5a;
+      --indigo: #3a3a3a;
+      --sky: #cecece;
+      --pink: #717171;
+      --accent: linear-gradient(100deg, #999999 0%, #cecece 58%, #3a3a3a 100%);
+
+      /* Peringatan kini kelabu perak, bukan merah */
+      --danger: #939393;
+      --danger-soft: rgba(113, 113, 113, 0.18);
+      --danger-stroke: rgba(147, 147, 147, 0.42);
+
+      /* Geometri & gerak */
+      --radius: 26px;
+      --radius-sm: 18px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --nav-h: 112px;
+      --shadow: 0 26px 70px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(123, 123, 123, 0.3);
+
+      /* Turunan alpha */
+      --w-0: rgba(255, 255, 255, 0);
+      --w-025: rgba(255, 255, 255, 0.025);
+      --w-035: rgba(255, 255, 255, 0.035);
+      --w-04: rgba(255, 255, 255, 0.04);
+      --w-07: rgba(255, 255, 255, 0.07);
+      --w-10: rgba(255, 255, 255, 0.1);
+      --w-14: rgba(255, 255, 255, 0.14);
+      --w-16: rgba(255, 255, 255, 0.16);
+      --w-18: rgba(255, 255, 255, 0.18);
+      --w-20: rgba(255, 255, 255, 0.2);
+      --w-22: rgba(255, 255, 255, 0.22);
+      --w-24: rgba(255, 255, 255, 0.24);
+      --w-25: rgba(255, 255, 255, 0.25);
+      --w-28: rgba(255, 255, 255, 0.28);
+      --w-32: rgba(255, 255, 255, 0.32);
+      --w-35: rgba(255, 255, 255, 0.35);
+      --w-42: rgba(255, 255, 255, 0.42);
+      --w-50: rgba(255, 255, 255, 0.5);
+      --black-35: rgba(0, 0, 0, 0.35);
+      --black-40: rgba(0, 0, 0, 0.4);
+      --black-50: rgba(0, 0, 0, 0.5);
+
+      /* Tint turunan aksen */
+      --lilac: #999999;
+      --lilac-10: rgba(153, 153, 153, 0.1);
+      --lilac-16: rgba(153, 153, 153, 0.16);
+      --lilac-28: rgba(153, 153, 153, 0.28);
+      --lilac-42: rgba(153, 153, 153, 0.42);
+      --lilac-50: rgba(153, 153, 153, 0.5);
+      --violet-22: rgba(114, 114, 114, 0.22);
+      --violet-35: rgba(85, 85, 85, 0.35);
+      --violet-45: rgba(85, 85, 85, 0.45);
+      --violet-deep-16: rgba(58, 58, 58, 0.16);
+      --violet-deep-24: rgba(58, 58, 58, 0.24);
+      --violet-deep-34: rgba(58, 58, 58, 0.34);
+      --violet-deep-50: rgba(58, 58, 58, 0.5);
+      --indigo-10: rgba(58, 58, 58, 0.1);
+      --sky-12: rgba(153, 153, 153, 0.12);
+      --sky-18: rgba(206, 206, 206, 0.18);
+      --sky-22: rgba(206, 206, 206, 0.22);
+      --sky-24: rgba(206, 206, 206, 0.24);
+      --sky-26: rgba(206, 206, 206, 0.26);
+      --sky-30: rgba(153, 153, 153, 0.3);
+      --sky-34: rgba(153, 153, 153, 0.34);
+      --danger-08: rgba(113, 113, 113, 0.08);
+      --danger-20: rgba(147, 147, 147, 0.2);
+      --danger-50: rgba(206, 206, 206, 0.5);
+      --toast-bg: rgba(20, 20, 20, 0.85);
+
+      /* Grid halus ala Zynthera */
+      --grid-line-a: rgba(153, 153, 153, 0.07);
+      --grid-line-b: rgba(123, 123, 123, 0.3);
+      --mask-solid: #000;
+      --grid-mask: radial-gradient(ellipse at 50% 30%, var(--mask-solid), transparent 80%);
+      --bg-image: url("assets/background.jpg");
+      --body-veil: linear-gradient(180deg, rgba(9, 9, 9, 0.55), rgba(9, 9, 9, 0.75));
+      --backdrop-glow: radial-gradient(circle at 50% 0%, rgba(113, 113, 113, 0.1), transparent 55%);
+      --nebula-a: radial-gradient(circle, rgba(85, 85, 85, 0.16), rgba(58, 58, 58, 0.5) 55%, transparent 70%);
+      --nebula-b: radial-gradient(circle, rgba(113, 113, 113, 0.1), rgba(77, 77, 77, 0.4) 55%, transparent 70%);
+      --heading-glow: 0 0 22px rgba(113, 113, 113, 0.26), 0 0 36px rgba(104, 104, 104, 0.3);
+      --hero-glow: 0 0 24px rgba(114, 114, 114, 0.3);
+
+      /* Font */
+      --font-display: "Orbitron", "Space Grotesk", sans-serif;
+      --font-body: "Space Grotesk", sans-serif;
+      /* Simbol khas CN (〆, ᭄, huruf matematik) perlukan fallback mesra emoji/simbol */
+      --font-symbol: "Space Grotesk", "Segoe UI Symbol", "Noto Sans Symbols 2", "Noto Sans Balinese", sans-serif;
+    }
+
+    @media (min-width: 768px) {
+      :root { --nav-h: 76px; }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: clip;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background-color: var(--bg);
+      background-image: var(--body-veil), var(--bg-image);
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: clip;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* Kunci scroll hanya saat intro berjalan */
+    body.is-loading { overflow: hidden; }
+
+    ::selection { background: var(--violet-45); color: var(--text); }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; }
+    svg { display: block; flex: none; }
+
+    :focus-visible {
+      outline: 2px solid var(--sky);
+      outline-offset: 3px;
+    }
+
+    /* Tipografi Zynthera: Orbitron untuk display, Space Grotesk untuk badan */
+    .brand,
+    .hero__title,
+    h2, h3,
+    .eyebrow,
+    .role,
+    .name,
+    .format-card__label,
+    .badge,
+    .link-card__go,
+    .warning-box h3 {
+      font-family: var(--font-display);
+    }
+
+    h2 {
+      text-align: center;
+      letter-spacing: 0.14em;
+      text-shadow: var(--heading-glow);
+    }
+
+    h3 { letter-spacing: 0.06em; }
+
+    .hero__title { letter-spacing: 0.1em; line-height: 1.12; }
+    .eyebrow, .role, .format-card__label, .badge, .link-card__go { letter-spacing: 0.18em; }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin-inline: auto;
+    }
+
+    /* =========================================================
+       1. BACKGROUND — NEBULA KELABU + GRID HALUS ALA ZYNETHERA
+       ========================================================= */
+    .backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+      /* Transparan: gambar background di body tetap kelihatan di bawah nebula & grid */
+      background: var(--backdrop-glow);
+    }
+
+    /* Grid samar dengan mask radial, sama seperti Zynthera */
+    .backdrop::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.06;
+      background-image:
+        linear-gradient(var(--grid-line-a) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line-b) 1px, transparent 1px);
+      background-size: 72px 72px;
+      -webkit-mask-image: var(--grid-mask);
+      mask-image: var(--grid-mask);
+      pointer-events: none;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.2;
+      will-change: transform;
+      animation: blob-float 20s ease-in-out infinite alternate;
+    }
+
+    .blob--1 {
+      width: 50vw;
+      min-width: 340px;
+      aspect-ratio: 1;
+      top: -18vw;
+      left: -14vw;
+      background: var(--nebula-a);
+      animation-duration: 20s;
+    }
+
+    .blob--2 {
+      width: 44vw;
+      min-width: 320px;
+      aspect-ratio: 1;
+      top: 35vh;
+      right: -16vw;
+      background: var(--nebula-b);
+      animation-duration: 20s;
+      animation-delay: -10s;
+    }
+
+    .blob--3 {
+      width: 46vw;
+      min-width: 320px;
+      aspect-ratio: 1;
+      bottom: -16vw;
+      left: -8vw;
+      background: var(--nebula-a);
+      opacity: 0.14;
+      animation-duration: 24s;
+      animation-delay: -5s;
+    }
+
+    .blob--4 {
+      width: 40vw;
+      min-width: 300px;
+      aspect-ratio: 1;
+      bottom: 2vw;
+      right: -12vw;
+      background: var(--nebula-b);
+      opacity: 0.16;
+      animation-duration: 26s;
+      animation-delay: -14s;
+    }
+
+    @keyframes blob-float {
+      from { transform: translate3d(0, 0, 0) scale(1); }
+      to   { transform: translate3d(4vw, 4vw, 0) scale(1.14); }
+    }
+
+    .page { position: relative; z-index: 1; }
+
+    /* =========================================================
+       2. LIQUID GLASS — KARTU, HIGHLIGHT & PANTAULAN POINTER
+       ========================================================= */
+    .glass {
+      position: relative;
+      isolation: isolate;
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      background: var(--glass);
+      -webkit-backdrop-filter: blur(4px) saturate(130%);
+      backdrop-filter: blur(4px) saturate(130%);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition:
+        transform 0.5s var(--ease),
+        background 0.4s var(--ease),
+        border-color 0.4s var(--ease),
+        box-shadow 0.4s var(--ease);
+    }
+
+    /* Highlight tipis di tepi atas: kesan kaca tebal */
+    .glass::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(140deg, var(--glass-sheen), transparent 35%);
+      -webkit-mask: linear-gradient(var(--mask-solid) 0 0) content-box, linear-gradient(var(--mask-solid) 0 0);
+      mask: linear-gradient(var(--mask-solid) 0 0) content-box, linear-gradient(var(--mask-solid) 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    /* Pantulan cahaya radial mengikuti kursor/jari (--x, --y dari JS) */
+    .liquid::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      border-radius: inherit;
+      background: radial-gradient(
+        260px circle at var(--x, 50%) var(--y, 50%),
+        var(--glass-glow),
+        var(--w-0) 62%
+      );
+      opacity: 0;
+      transition: opacity 0.35s var(--ease);
+    }
+
+    .liquid:hover::after,
+    .liquid.is-tracking::after { opacity: 1; }
+
+    .glass > * { position: relative; z-index: 2; }
+
+    .glass:hover,
+    .glass:focus-visible,
+    .glass:active {
+      background: var(--glass-hover);
+      border-color: var(--glass-edge);
+    }
+
+    .lift:hover,
+    .lift:focus-visible,
+    .lift:active { transform: scale(1.03); }
+
+    /* =========================================================
+       3. INTRO / LOADING SCREEN
+       ========================================================= */
+    .intro {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: grid;
+      place-items: center;
+      background: var(--bg-deep);
+      opacity: 1;
+      transition: opacity 0.7s ease;
+    }
+
+    .intro.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Dua fasa:
+       1) N -> C -> S, satu huruf fade in/out pada satu masa.
+       2) Selepas semua huruf "out", ketiga-tiga "in" serentak. */
+    .intro__mark {
+      display: flex;
+      justify-content: center;
+      gap: 0.04em;
+      font-size: clamp(3.4rem, 18vw, 6rem);
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .intro__mark span {
+      display: inline-block;
+      opacity: 0;
+      background: var(--accent);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      --step: 0.06s;
+      animation:
+        intro-letter 0.6s var(--ease) var(--step) both,
+        intro-ensemble 0.55s var(--ease) 1.56s forwards;
+    }
+
+    /* Fasa 1 — N -> C -> S dengan pertindihan separuh:
+       huruf seterusnya "in" separuh tepat bila huruf sebelumya "out" separuh.
+       Separuh-in = 15% (0.09s), separuh-out = 85% (0.51s) -> jarak 0.42s.
+       Fasa 2 guna delay yang sama (1.56s) untuk semua huruf -> serentak. */
+    .intro__mark span:nth-child(1) { --step: 0.06s; }
+    .intro__mark span:nth-child(2) { --step: 0.48s; }
+    .intro__mark span:nth-child(3) { --step: 0.9s; }
+
+    .intro__line {
+      position: absolute;
+      top: calc(50% + clamp(48px, 22vw, 78px));
+      width: min(180px, 45vw);
+      height: 2px;
+      border-radius: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: center;
+      animation: intro-line 0.5s var(--ease) 2.12s forwards;
+    }
+
+    @keyframes intro-letter {
+      0%   { opacity: 0; transform: translateY(16px) scale(0.72); filter: blur(12px); }
+      30%  { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+      70%  { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+      100% { opacity: 0; transform: translateY(-12px) scale(1.08); filter: blur(9px); }
+    }
+
+    /* Fasa 2: bermula dari keadaan akhir fasa 1 (supaya tiada "lompat"),
+       kemudian semua huruf fade in bersama-sama. */
+    @keyframes intro-ensemble {
+      from { opacity: 0; transform: translateY(-12px) scale(1.08); filter: blur(9px); }
+      to   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    }
+
+    @keyframes intro-line {
+      to { transform: scaleX(1); }
+    }
+
+    /* =========================================================
+       4. NAVBAR GLASS STICKY
+       ========================================================= */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      padding: 10px clamp(12px, 4vw, 32px) 0;
+    }
+
+    .nav-shell {
+      width: min(1120px, 100%);
+      margin-inline: auto;
+      padding: 10px 12px;
+      border-radius: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+      padding: 4px 6px;
+      min-height: 44px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      white-space: nowrap;
+    }
+
+    .brand span { background: var(--accent); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .brand small { color: var(--muted-2); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.04em; }
+
+    .nav-links {
+      position: relative;
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-snap-type: x proximity;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-links::-webkit-scrollbar { display: none; }
+
+    .nav-links a {
+      flex: none;
+      scroll-snap-align: center;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 14px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: color 0.3s var(--ease), background 0.3s var(--ease), border-color 0.3s var(--ease);
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible,
+    .nav-links a.active {
+      color: var(--text);
+      background: var(--glass-strong);
+      border-color: var(--stroke-soft);
+      box-shadow: inset 0 1px 0 var(--glass-sheen);
+    }
+
+    @media (min-width: 768px) {
+      .nav-shell { flex-direction: row; align-items: center; justify-content: space-between; gap: 16px; }
+      .nav-links { overflow-x: visible; }
+      .nav-links a { font-size: 0.8rem; }
+    }
+
+    /* =========================================================
+       5. TRANSISI SECTION — IN / OUT + STAGGER
+       ========================================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      filter: blur(10px);
+      transition:
+        opacity 0.7s var(--ease),
+        transform 0.7s var(--ease),
+        filter 0.7s var(--ease);
+      transition-delay: 0ms;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+      filter: blur(0);
+      transition-delay: calc(var(--i, 0) * 70ms);
+    }
+
+    /* Hover tetap menang setelah elemen selesai reveal */
+    .reveal.is-visible.lift:hover,
+    .reveal.is-visible.lift:focus-visible,
+    .reveal.is-visible.lift:active { transform: scale(1.03); }
+
+    .section {
+      padding-top: clamp(64px, 11vw, 110px);
+      scroll-margin-top: calc(var(--nav-h) + 16px);
+    }
+
+    .section-head { margin-bottom: 26px; }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+      color: var(--muted-2);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--sky));
+    }
+
+    h2, h3 { margin: 0; letter-spacing: -0.035em; line-height: 1.2; }
+    h2 { margin-top: 10px; font-size: clamp(1rem, 4vw, 1.4rem); font-weight: 700; }
+    .section-desc { margin: 10px 0 0; color: var(--muted); font-size: 0.94rem; }
+
+    /* =========================================================
+       6. HERO
+       ========================================================= */
+    .hero {
+      min-height: calc(100svh - var(--nav-h));
+      display: grid;
+      place-items: center;
+      padding: clamp(44px, 9vw, 80px) 0 clamp(56px, 10vw, 90px);
+      text-align: center;
+      scroll-margin-top: var(--nav-h);
+    }
+
+    .hero__inner { max-width: 800px; }
+
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 40px;
+      padding: 0 16px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .hero__badge i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--sky);
+      box-shadow: 0 0 12px var(--sky);
+    }
+
+    .hero__title {
+      margin: 22px 0 16px;
+      font-size: clamp(1.25rem, 6.2vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.18;
+      letter-spacing: 0.1em;
+      text-shadow: var(--hero-glow);
+      text-wrap: balance;
+    }
+
+    .grad-text {
+      background: var(--accent);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero__sub {
+      max-width: 620px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: clamp(0.94rem, 3.7vw, 1.1rem);
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 20px;
+      border-radius: 13px;
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      font-weight: 700;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn--primary {
+      border-color: var(--lilac-28);
+      background: linear-gradient(100deg, var(--violet-deep-34), var(--sky-24));
+      box-shadow: 0 14px 36px var(--violet-deep-16), inset 0 1px 0 var(--glass-sheen);
+    }
+
+    .btn--small { min-height: 44px; padding: 0 16px; font-size: 0.82rem; }
+
+    .hero__note { margin-top: 20px; color: var(--muted-2); font-size: 0.78rem; }
+
+    /* =========================================================
+       7. STRUKTUR MARGA
+       ========================================================= */
+    .grid { display: grid; gap: 14px; }
+
+    .grid--people { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .person-card {
+      min-height: 190px;
+      padding: 22px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 1.3rem;
+      font-weight: 800;
+      border: 1px solid var(--glass-edge);
+      background: linear-gradient(145deg, var(--violet-22), var(--sky-18));
+      box-shadow: inset 0 1px 0 var(--glass-sheen), 0 12px 26px var(--black-35);
+    }
+
+    .person-card--placeholder .avatar {
+      border-style: dashed;
+      border-color: var(--stroke);
+      background: var(--w-04);
+      color: var(--muted);
+      box-shadow: none;
+    }
+
+    .role {
+      color: var(--sky);
+      font-size: 0.64rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .name { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; }
+
+    /* Nama CYAA kekal nampak seperti teks biasa — tiada border/fokus yang kelihatan.
+       Fungsi 10 tekanan masih aktif, tetapi butangnya disembunyikan sepenuhnya. */
+    .name--secret {
+      appearance: none;
+      -webkit-appearance: none;
+      min-height: 44px;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      cursor: default;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .name--secret:hover,
+    .name--secret:focus,
+    .name--secret:focus-visible,
+    .name--secret:active,
+    .name--secret.is-primed {
+      outline: none;
+      background: transparent;
+      color: inherit;
+      text-shadow: none;
+      transform: none;
+    }
+    .status { color: var(--muted); font-size: 0.8rem; }
+
+    /* =========================================================
+       8. PERATURAN MARGA
+       ========================================================= */
+    .grid--rules { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .info-card {
+      min-height: 128px;
+      padding: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .info-icon {
+      flex: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: var(--sky);
+      background: var(--sky-12);
+      border: 1px solid var(--sky-22);
+    }
+
+    .info-card h3 { font-size: 0.98rem; font-weight: 800; }
+    .info-card p { margin: 8px 0 0; color: var(--muted); font-size: 0.85rem; }
+
+    /* =========================================================
+       9. FORMAT CN
+       ========================================================= */
+    .grid--format { grid-template-columns: 1fr; }
+
+    .format-card { padding: 22px; display: flex; flex-direction: column; gap: 12px; }
+
+    .format-card__label {
+      color: var(--muted-2);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .format-card__text {
+      font-family: var(--font-symbol);
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      font-size: clamp(1.02rem, 4vw, 1.2rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      overflow-wrap: anywhere;
+    }
+
+    .format-card__foot { display: flex; justify-content: flex-end; }
+
+    /* CN Partner — generator gaya Zynthera (berdiri sendiri, bukan gantikan format asal) */
+    /* Jarak & padding sama dengan .format-card / .grid supaya kedua-dua
+       bahagian Format CN dan CN Partner nampak seperti satu kumpulan. */
+    .cn-partner {
+      margin-top: 14px;
+      padding: 22px;
+    }
+
+    .cn-partner__head { margin-bottom: 12px; }
+    .cn-partner__head h3 { font-size: 1rem; color: var(--text); }
+    .cn-partner__head p { margin: 8px 0 0; color: var(--muted); font-size: 0.85rem; }
+
+    .field { display: grid; gap: 8px; }
+
+    .field label {
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      color: var(--muted-2);
+    }
+
+    .field input {
+      width: 100%;
+      min-height: 48px;
+      padding: 0 14px;
+      border: 1px solid var(--stroke-soft);
+      border-radius: 12px;
+      background: var(--w-04);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+    }
+
+    .field input::placeholder { color: var(--muted-2); }
+    .field input:focus { border-color: var(--lilac-42); background: var(--w-07); }
+
+    .cn-lines { display: grid; gap: 10px; margin-top: 12px; }
+
+    .cn-line {
+      min-height: 46px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 8px 6px 14px;
+      border: 1px solid var(--stroke-soft);
+      border-radius: 12px;
+      background: var(--w-025);
+    }
+
+    .cn-line__text {
+      font-family: var(--font-symbol);
+      flex: 1;
+      min-width: 0;
+      overflow-wrap: anywhere;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .cn-copy {
+      flex: none;
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--stroke-soft);
+      border-radius: 10px;
+      background: var(--w-04);
+      color: var(--muted);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 0.4s var(--ease), background 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease);
+    }
+
+    .cn-copy:hover,
+    .cn-copy:focus-visible,
+    .cn-copy:active {
+      transform: scale(1.03);
+      background: var(--glass-hover);
+      border-color: var(--stroke);
+      color: var(--text);
+    }
+
+    /* =========================================================
+       10. HASHTAG MARGA
+       ========================================================= */
+    .chips { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .chip {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 700;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .chip--featured {
+      transform: scale(1.02);
+      border-color: var(--lilac-28);
+      background: linear-gradient(100deg, var(--violet-22), var(--sky-18));
+      box-shadow: 0 0 0 1px var(--lilac-10), 0 16px 42px var(--violet-deep-16), inset 0 1px 0 var(--glass-sheen);
+      font-size: 1rem;
+    }
+
+    .chip--featured.reveal.is-visible { transform: scale(1.02); }
+
+    .chip--featured:hover,
+    .chip--featured:focus-visible,
+    .chip--featured:active,
+    .chip--featured.reveal.is-visible:hover,
+    .chip--featured.reveal.is-visible:focus-visible,
+    .chip--featured.reveal.is-visible:active { transform: scale(1.05); }
+
+    .badge {
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--w-16);
+      border: 1px solid var(--w-18);
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hashtag-actions { margin-top: 22px; }
+
+    /* =========================================================
+       11. RULES ⚠️ — LIST + KOTAK PERINGATAN SANKSI
+       ========================================================= */
+    .rules-card { padding: clamp(18px, 4.5vw, 30px); border-color: var(--stroke-soft); }
+
+    .rules-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .rules-list li {
+      min-height: 46px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 14px;
+      border: 1px solid var(--stroke-soft);
+      border-radius: var(--radius-sm);
+      background: var(--w-025);
+      font-size: 0.9rem;
+    }
+
+    .rule-icon { flex: none; margin-top: 3px; color: var(--sky); }
+
+    .warning-box {
+      margin-top: 20px;
+      padding: clamp(18px, 4.5vw, 28px);
+      border: 1px solid var(--danger-stroke);
+      border-radius: var(--radius);
+      background: linear-gradient(155deg, var(--danger-soft), var(--w-025) 70%);
+      -webkit-backdrop-filter: blur(4px) saturate(130%);
+      backdrop-filter: blur(4px) saturate(130%);
+      box-shadow: 0 20px 55px var(--black-40), inset 0 1px 0 var(--glass-sheen);
+    }
+
+    .warning-box h3 { display: flex; align-items: center; gap: 10px; font-size: 1.05rem; }
+    .warning-box h3::before {
+      content: "⚠";
+      font-size: 1rem;
+      filter: drop-shadow(0 0 10px var(--danger-50));
+    }
+
+    .warning-box .rules-list { margin-top: 16px; }
+
+    .warning-box .rules-list li {
+      background: var(--danger-08);
+      border-color: var(--danger-20);
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .warning-box .rule-icon { color: var(--danger); }
+
+    /* =========================================================
+       12. LINK RESMI
+       ========================================================= */
+    .grid--link { grid-template-columns: 1fr; }
+
+    .link-card {
+      min-height: 200px;
+      padding: clamp(22px, 5vw, 32px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .link-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 17px;
+      display: grid;
+      place-items: center;
+      color: var(--text);
+      border: 1px solid var(--glass-edge);
+      background: linear-gradient(145deg, var(--violet-22), var(--sky-18));
+      box-shadow: inset 0 1px 0 var(--glass-sheen);
+    }
+
+    .link-card h3 { font-size: 1.25rem; font-weight: 800; }
+    .link-card p { margin: 8px 0 0; color: var(--muted); font-size: 0.86rem; }
+
+    .link-card__go {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--sky);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       13. FOOTER & TOAST
+       ========================================================= */
+    .footer {
+      margin-top: clamp(72px, 12vw, 120px);
+      padding: 32px 16px calc(36px + env(safe-area-inset-bottom));
+      border-top: 1px solid var(--w-07);
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: calc(24px + env(safe-area-inset-bottom));
+      z-index: 200;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 20px;
+      border: 1px solid var(--stroke);
+      border-radius: 999px;
+      background: var(--toast-bg);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 16px 40px var(--black-50), inset 0 1px 0 var(--glass-sheen);
+      color: var(--text);
+      font-size: 0.86rem;
+      font-weight: 700;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
+    }
+
+    .toast.is-show { opacity: 1; transform: translate(-50%, 0); }
+
+    /* =========================================================
+       14. BREAKPOINT DESKTOP
+       ========================================================= */
+    @media (min-width: 640px) {
+      .grid--people { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .grid--format,
+      .grid--link { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (min-width: 900px) {
+      .rules-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .warning-box .rules-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    /* =========================================================
+       15. PREFERS-REDUCED-MOTION — MATIKAN ANIMASI BERAT
+       ========================================================= */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .blob { animation: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; filter: none !important; }
+      .liquid::after { display: none; }
+      .intro__mark span { opacity: 1; transform: none; filter: none; }
+      .intro__line { transform: scaleX(1); }
+      .chip--featured { transform: none; }
+    }
